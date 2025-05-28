@@ -1,0 +1,8 @@
+set -Eeuxo pipefail
+
+# Set up environment for Flask debug server
+export FLASK_ENV=development
+export FLASK_APP=rogerlib
+
+# Run development server
+flask run --port 8100 --host 192.168.4.80
