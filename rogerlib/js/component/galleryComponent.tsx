@@ -3,6 +3,7 @@ import { useState, useLayoutEffect, useEffect, useContext } from "react";
 import { DictType, ItemType, ModelContext, useModelContext, useColorModeContext } from "../context/galleryContext";
 import { useDevice } from "../hooks/useDevice";
 import DetailContainerComponent from "../component/detailComponent";
+import FilterComponent from "../component/filterComponent";
 
 interface DetailViewType {
     item: ItemType | null;
@@ -153,6 +154,7 @@ export default function GalleryComponent({ outData }) {
                 <div id="standard-header">
                     <hr className="solid"/>
                 </div>
+                <FilterComponent outData={handleFilterResults}/>
                 <LibraryListComponent inData={{selection: selection, items: items}} outData={openDetailView}/>
                 {detailViewConfig.toggle && (
                             <DetailContainerComponent inData={inData} outData={closeDetailView}></DetailContainerComponent>

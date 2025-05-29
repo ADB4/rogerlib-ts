@@ -7,7 +7,7 @@ interface CategoryDict {
     [key: string]: string[];
 }
 export default function FilterComponent({ outData }) {
-    const [visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState<boolean>(false);
     const [categories, setCategories] = useState<string[]>([]);
     const [categoryMap, setCategoryMap] = useState<CategoryDict>({});
     const [selection, setSelection] = useState<string[]>([]);
@@ -76,15 +76,9 @@ export default function FilterComponent({ outData }) {
         backgroundColor: darkMode ? "black":"white",
         color: darkMode ? "white":"black",
         border: darkMode ? "2px solid white":"2px solid #DFDDD5",
-        transition: "all .5s ease",
-        WebKitTransition: "all .5s ease",
-        MozTransition: "all .5s ease",
     };
     const textColor = {
         color: darkMode ? "white":"black",
-        transition: "all .5s ease",
-        WebKitTransition: "all .5s ease",
-        MozTransition: "all .5s ease",
     };
     return (
         <>

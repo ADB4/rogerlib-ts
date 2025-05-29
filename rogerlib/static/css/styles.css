@@ -29,7 +29,7 @@
     src: url("https://d2fhlomc9go8mv.cloudfront.net/static/fonts/Swiss721MediumItalic.woff2");
     font-weight: 300;
     font-style: italic;
-}
+} 
 @font-face {
     font-family: Swiss721;
     src: url("https://d2fhlomc9go8mv.cloudfront.net/static/fonts/Swiss721Bold.woff2");
@@ -626,6 +626,9 @@ Detail Description Component
     z-index: 4;
     animation: 0.5s ease 0s normal forwards 1 fadeIn;
     -webkit-animation: 0.5s ease 0s normal forwards 1 fadeIn;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
 }
 .lib-nav-inactive {
     cursor: pointer;
@@ -675,6 +678,9 @@ Detail Description Component
     font-family: Swiss721;
     font-weight: 200;
     font-size: 1.0rem;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
 }
 .lib-nav-close p {
     cursor: pointer;
@@ -698,6 +704,7 @@ Detail Description Component
     margin-bottom: 0rem;
 }
 .nav-subcategories li {
+    cursor: pointer;
     margin-bottom: 0rem;
     font-family: Swiss721;
     font-weight: 200;
