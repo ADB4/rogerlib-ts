@@ -9,7 +9,7 @@ ModelViewerComponent
 Takes input: {item}
 */
 export default function ModelViewerComponent({ inData, outData }) {
-    const darkMode = useColorModeContext();
+    const { darkMode, setDarkMode } = useColorModeContext();
     const [activeImage, setActiveImage] = useState<string>('');
     const [viewState, setViewState] = useState<ViewerStateType>({
         lod: "NULL",
@@ -61,7 +61,7 @@ export default function ModelViewerComponent({ inData, outData }) {
     }, [inData]);
 
     const imageContainerStyle = {
-        backgroundColor: darkMode ? "#F9FFC7":"white",
+        backgroundColor: darkMode ? "white":"white",
     };
     const detailToggle = {
         backgroundColor: "#E5FFFE",

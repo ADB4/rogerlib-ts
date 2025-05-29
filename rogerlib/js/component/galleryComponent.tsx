@@ -8,16 +8,9 @@ interface DetailViewType {
     item: ItemType | null;
     toggle: boolean;
 }
-interface GalleryInfoType {
-    about: string;
-    cntct: string;
-}
+
 export default function GalleryComponent({ outData }) {
     const [informationToggle, setInformationToggle] = useState<boolean>(false);
-    const [galleryInfo, setGalleryInfo] = useState<GalleryInfoType>({
-        about: "",
-        cntct: "",
-    });
     const [items, setItems] = useState<ItemType[]>([]);
     const [selection, setSelection] = useState<ItemType[]>([]);
     const [detailViewConfig, setDetailViewConfig] = useState<DetailViewType>({
@@ -27,7 +20,7 @@ export default function GalleryComponent({ outData }) {
     const { darkMode, setDarkMode } = useColorModeContext();
     const compactView = useDevice();
 
-    function delay(ms) {
+    function delay(ms: number) {
         return new Promise(res => setTimeout(res, ms));
     }
     async function openDetailView(data) {
@@ -58,14 +51,6 @@ export default function GalleryComponent({ outData }) {
             setDetailViewConfig({item: data, 
                 toggle: true});
         }
-    }
-    async function handleInformationToggle() {
-        if (detailViewConfig.toggle) {
-            setDetailViewConfig({item: null, toggle: false});
-        }
-        await delay(200);
-        setInformationToggle(!informationToggle);
-
     }
     function handleFilterResults(data) {
         if (data.length == 0) {
@@ -127,11 +112,6 @@ export default function GalleryComponent({ outData }) {
                         };
                         itemArray.push(itemDict);
                     }
-                    const galleryinformation = {
-                        'about': data.info,
-                        'cntct': data.cntct,
-                    };
-                    setGalleryInfo(galleryinformation);
                     setItems(itemArray);
                     setSelection(itemArray);
                 }

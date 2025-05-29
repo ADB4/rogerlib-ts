@@ -8,10 +8,11 @@ import { useDevice } from "../hooks/useDevice";
 import { compactDescriptionHeader, compactExitButton } from "../style/modelDetailStyles";
 import ModelViewerComponent from "../component/modelViewer";
 import DetailDescriptionComponent from "../component/detailDescriptionComponent";
+import DownloadComponent from "../component/downloadComponent";
 
 export default function DetailContainerComponent({ inData, outData }) {
     const compactView = useDevice();
-    const darkMode = useColorModeContext();
+    const { darkMode, setDarkMode } = useColorModeContext();
     const [toggleView, setToggleView] = useState(true);
 
     function handleClose() {
@@ -39,7 +40,7 @@ export default function DetailContainerComponent({ inData, outData }) {
     let detailToggleDark: React.CSSProperties = {};
     let detailToggleText: React.CSSProperties = {};
     // height is image resolution + height of view dashboard (8rem) + height of item header (6rem)
-    detailContainerHeight = scaledResolution + 192;
+    detailContainerHeight = scaledResolution + 128;
     // mobile view
     if (compactView == true) {
         scaledResolution = 256;
@@ -48,34 +49,10 @@ export default function DetailContainerComponent({ inData, outData }) {
         detailContainerHeight = scaledResolution + 192;
         // left container for model viewer
         detailLeft = {
-            gridColumnStart: "1",
-            gridColumnEnd: "-1",
-            gridRowStart: "1",
-            gridRowEnd: "-1",
-            height: "100%",
-            maxHeight: containerheight,
-            width: "auto",
             minWidth: scaledResolution+"px",
-            display: "grid",
-            gridTemplateColumns: "auto",
-            gridTemplateRows: "4rem auto 10.5rem",
-            WebkitTransition: "1s ease 0s normal forwards 1 fadeIn",
-            transition: "1s ease 0s normal forwards 1 fadeIn",
         };
         detailRight = {
-            gridColumnStart: "1",
-            gridColumnEnd: "-1",
-            gridRowStart: "1",
-            gridRowEnd: "-1",
-            height: "100%",
-            width: "auto",
             minWidth: scaledResolution+"px",
-            display: "grid",
-            gridTemplateColumns: "auto",
-            gridTemplateRows: "4rem auto 10.5rem",
-            outline: "1px solid #C6C6C6",
-            WebkitTransition: "1s ease 0s normal forwards 1 fadeIn",
-            transition: "1s ease 0s normal forwards 1 fadeIn",
         };
         detailToggle = {
             backgroundColor: toggleView ? ("#E5FFFE") : ("#F9FFC7"),
@@ -92,11 +69,11 @@ export default function DetailContainerComponent({ inData, outData }) {
         detailContainerHeight = scaledResolution + 192;
         // left container for model viewer
         detailLeft = {
-            height: detailContainerHeight + "px",
+            height: "auto",
             minWidth: scaledResolution+"px",
         };
         detailRight = {
-            height: detailContainerHeight + "px",
+            height: "auto",
             minWidth: scaledResolution+"px",
         };
     }
@@ -108,7 +85,7 @@ export default function DetailContainerComponent({ inData, outData }) {
     exitButtonStyle = compactExitButton;
     const textColor: React.CSSProperties = {
         color: darkMode? "black":"black",
-        backgroundColor: darkMode ? "#E5FFFE":"white",
+        backgroundColor: darkMode ? "white":"white",
     };
     const desktopDescriptionHeader: React.CSSProperties = {
         gridColumnStart: "1",
@@ -134,15 +111,21 @@ export default function DetailContainerComponent({ inData, outData }) {
             {compactView && (
                 <>
                 {toggleView && (
-                    <div id="model-detail-container-innerA" style={detailLeft}>
+                    <div id="model-detail-compact-left" style={detailLeft}>
+                        <ModelViewerComponent inData={{item: inData.item, imageresolution: scaledResolution}} outData={handleToggleView}/>
                     </div>
                 )}
                 {!toggleView && (
-                    <div id="model-detail-container-innerB" style={detailRight}>
+                    <div id="model-detail-compact-right" style={detailRight}>
                         <DetailHeaderComponent inData={{'item': inData.item,
                                                 'style': compactDescriptionHeader}}/>
+                        <DetailDescriptionComponent inData={{'item': inData.item,
+                                                            'imageresolution': scaledResolution,
+                                                            'containerheight': detailContainerHeight,
+                                                            'style': compactDescriptionHeader}}/>
                         <div className="model-detail-actions">
                             <div className="description-download-container">
+                                <DownloadComponent inData={{'item': inData.item}}/>
                             </div>
                             <div className="model-detail-toggle-container" style={detailToggle}>
                                 <button className="model-detail-toggle-container-inner" style={detailToggleDark} onClick={() => {handleToggleView()}}><p style={detailToggleText}>TOGGLE MODEL VIEWER</p></button>
@@ -166,7 +149,7 @@ export default function DetailContainerComponent({ inData, outData }) {
                                                             'style': compactDescriptionHeader}}/>
                         <div className="model-detail-actions">
                             <div className="description-download-container">
-
+                                <DownloadComponent inData={{'item': inData.item}}/>
                             </div>
                         </div>
 

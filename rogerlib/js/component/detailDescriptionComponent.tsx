@@ -8,7 +8,7 @@ interface ContentType {
     [key: string]: string;
 }
 export default function DetailDescriptionComponent({ inData }) {
-    const darkMode = useColorModeContext();
+    const { darkMode, setDarkMode } = useColorModeContext();
     const [content, setContent] = useState<ContentType>({
         'header': '',
         'description': '',
