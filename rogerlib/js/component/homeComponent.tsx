@@ -1,7 +1,7 @@
 import * as React from "react"
-import { useState, useLayoutEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import QuoteComponent from './quoteComponent';
-import { ColorModeContext, useColorModeContext } from '../context/galleryContext';
+import { useColorModeContext } from '../context/galleryContext';
 import { Link } from "react-router";
 import { useDevice } from '../hooks/useDevice';
 

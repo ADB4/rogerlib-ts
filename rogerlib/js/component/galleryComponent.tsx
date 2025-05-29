@@ -1,6 +1,6 @@
 import * as React from "react"
-import { useState, useLayoutEffect, useEffect, useContext } from "react";
-import { DictType, ItemType, ModelContext, useModelContext, useColorModeContext } from "../context/galleryContext";
+import { useState, useLayoutEffect, useEffect } from "react";
+import { ItemType, ModelContext, useModelContext, useColorModeContext } from "../context/galleryContext";
 import { useDevice } from "../hooks/useDevice";
 import DetailContainerComponent from "../component/detailComponent";
 import FilterComponent from "../component/filterComponent";

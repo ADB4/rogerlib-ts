@@ -1,6 +1,6 @@
 import * as React from "react"
-import { useState, useContext } from 'react';
-import { ColorModeContext, useColorModeContext } from '../context/galleryContext';
+import { useState } from 'react';
+import { useColorModeContext } from '../context/galleryContext';
 import { useDevice } from '../hooks/useDevice';
 
 export default function QuoteComponent() {

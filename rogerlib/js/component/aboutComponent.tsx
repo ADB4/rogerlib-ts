@@ -2,7 +2,7 @@ import * as React from "react"
 import { useState, useLayoutEffect } from 'react';
 import Markdown from 'react-markdown';
 import { Link } from "react-router";
-import { ColorModeContext, useColorModeContext } from '../context/galleryContext';
+import { useColorModeContext } from '../context/galleryContext';
 import { useDevice } from '../hooks/useDevice';
 
 export default function AboutComponent({ outData }) {

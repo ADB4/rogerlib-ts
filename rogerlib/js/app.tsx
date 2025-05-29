@@ -25,14 +25,6 @@ export default function App() {
         setDarkMode: () => {}
     };
     const [colorToggle, setColorToggle] = useState<boolean>(defaultColor.darkMode);
-    /*
-    const [colorToggle, setColorToggle] = useState(false);
-
-    const [viewportContext, setViewportContext] = useState({
-        'darkMode': false,
-        'compactView': false,
-    });
-*/
     const [darkMode, setDarkMode] = useState<boolean>(defaultColor.darkMode);
     const [colorScheme, setColorScheme] = useState<ColorSchemeType>({
         logoURL: ["",""],
@@ -41,20 +33,11 @@ export default function App() {
         beanColors: ["",""],
         beanTextColors: ["",""],
     });
-/*
-    const [colorScheme, setColorScheme] = useState({
-        'logoURL': ["",""],
-        'backgroundColors': ["",""],
-        'textColors': ["",""],
-        'beanColors': ["",""],
-        'beanTextColors': ["",""],
-    });
-*/
     const compactView = useDevice();
     function handleColorToggle(toggle: boolean, data: ColorSchemeType): void {
         setColorToggle(toggle);
         let scheme: ColorSchemeType = {
-            'logoURL': ["../static/graphics/logo_rogerlib_white.svg","../static/graphics/logo_rogerlib_black.svg"],
+            'logoURL': ["https://d2fhlomc9go8mv.cloudfront.net/static/graphics/logo_rogerlib_white.svg","https://d2fhlomc9go8mv.cloudfront.net/static/graphics/logo_rogerlib_black.svg"],
             'backgroundColors': [data.backgroundColors[0],data.backgroundColors[1]],
             'textColors': [data.textColors[0],data.textColors[1]],
             'beanColors': [data.beanColors[0],data.beanColors[1]],
@@ -62,19 +45,6 @@ export default function App() {
         };
         setColorScheme(scheme);
     }
-/*
-    function handleColorToggle(toggle, data) {
-        setColorToggle(toggle);
-        let scheme = {
-            'logoURL': ["../static/graphics/logo_rogerlib_white.svg","../static/graphics/logo_rogerlib_black.svg"],
-            'backgroundColors': [data.backgroundColors[0],data.backgroundColors[1]],
-            'textColors': [data.textColors[0],data.textColors[1]],
-            'beanColors': [data.beanColors[0],data.beanColors[1]],
-            'beanTextColors': [data.beanTextColors[0],data.beanTextColors[1]],
-        };
-        setColorScheme(scheme);
-    }
-*/
     function toggleDarkMode(): void {
         setDarkMode(!darkMode);
     }

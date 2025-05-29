@@ -1,7 +1,7 @@
 import * as React from "react"
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { ColorModeContext } from "../context/galleryContext";
+import { ColorModeContext, useColorModeContext } from "../context/galleryContext";
 
 interface CategoryDict {
     [key: string]: string[];
@@ -11,7 +11,9 @@ export default function FilterComponent({ outData }) {
     const [categories, setCategories] = useState<string[]>([]);
     const [categoryMap, setCategoryMap] = useState<CategoryDict>({});
     const [selection, setSelection] = useState<string[]>([]);
-    const darkMode = useContext(ColorModeContext)
+    const { darkMode, setDarkMode } = useColorModeContext();
+
+
     function handleClick(data: string, role) {
         let current: string[] = [];
         if (role == 'parent') {
@@ -72,12 +74,12 @@ export default function FilterComponent({ outData }) {
     };
 
     }, []);
-    const colorScheme = {
+    const colorScheme: React.CSSProperties = {
         backgroundColor: darkMode ? "black":"white",
         color: darkMode ? "white":"black",
         border: darkMode ? "2px solid white":"2px solid #DFDDD5",
     };
-    const textColor = {
+    const textColor: React.CSSProperties = {
         color: darkMode ? "white":"black",
     };
     return (

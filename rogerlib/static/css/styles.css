@@ -1243,6 +1243,9 @@ body {
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: -1;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
 }
 /*
 total height of web + lib header is 4.3rem

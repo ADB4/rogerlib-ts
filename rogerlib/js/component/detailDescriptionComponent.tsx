@@ -1,8 +1,7 @@
 import * as React from "react"
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useColorModeContext, ItemType } from "../context/galleryContext";
 import { useDevice } from "../hooks/useDevice";
-import PropTypes from "prop-types";
 
 interface ContentType {
     [key: string]: string;

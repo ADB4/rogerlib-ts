@@ -1,7 +1,6 @@
 import * as React from "react"
-import { useState, useEffect, useContext } from "react";
-import { ItemType, ViewerStateType, ViewerStateContext, useViewerStateContext, useSelectorContext, SelectorContextType, SelectorContext, ViewContextType, ViewerOptionsType, ViewerOptionsContext, useViewerOptionsContext, useColorModeContext, ColorModeContext} from "../context/galleryContext";
-import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
+import { ViewerStateType, ViewerStateContext, useViewerStateContext, useSelectorContext, SelectorContext, ViewContextType, ViewerOptionsType, ViewerOptionsContext, useViewerOptionsContext, useColorModeContext } from "../context/galleryContext";
 import { useDevice } from "../hooks/useDevice";
 
 /* 

@@ -1,9 +1,8 @@
 import * as React from "react"
 import { useState } from "react";
-import PropTypes from "prop-types";
 
 // import ModelViewerComponent from "./modelViewer";
-import { ItemType, DetailContext, useDetailContext, useColorModeContext} from "../context/galleryContext";
+import { DetailContext, useColorModeContext} from "../context/galleryContext";
 import { useDevice } from "../hooks/useDevice";
 import { compactDescriptionHeader, compactExitButton } from "../style/modelDetailStyles";
 import ModelViewerComponent from "../component/modelViewer";
