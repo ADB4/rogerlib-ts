@@ -5,6 +5,7 @@ interface ViewType {
     darkMode: boolean;
     compactView: boolean;
 }
+
 export interface ViewportContextType {
     viewContext: ViewType;
     setViewContext: Dispatch<SetStateAction<ViewType>>;
@@ -19,6 +20,33 @@ export const useViewportContext = () => {
     return context;
 };
 
+// Model Viewer Context
+export interface ViewerStateType {
+    lod: string;
+    shading: string;
+    material: string;
+    color: string;
+    wireframe: boolean;
+}
+export const ViewerStateContext = createContext<ViewerStateType | undefined>(undefined);
+export const useViewerStateContext = () => {
+    const context = useContext(ViewerStateContext);
+    if (context === undefined) {
+        throw new Error('Viewer State context not found.');
+    }
+    return context;
+}
+export interface ViewerOptionsType {
+    [key: string]: string[];
+}
+export const ViewerOptionsContext = createContext<ViewerOptionsType | undefined>(undefined);
+export const useViewerOptionsContext = () => {
+    const context = useContext(ViewerOptionsContext);
+    if (context === undefined) {
+        throw new Error('Viewer State context not found.');
+    }
+    return context;
+}
 // ColorModeContext: For light/dark mode
 export interface ColorModeContextType {
     darkMode: boolean;
@@ -103,7 +131,7 @@ export const ParameterContext = createContext<ParameterContextType | undefined>(
 export const useParameterContext = () => {
     const context = useContext(ParameterContext);
     if (context === undefined) {
-        throw new Error('View context not found.');
+        throw new Error('Viewer Options context not found.');
     }
     return context;
 }
@@ -115,7 +143,7 @@ export const SelectorContext = createContext<SelectorContextType | undefined>(un
 export const useSelectorContext = () => {
     const context = useContext(SelectorContext);
     if (context === undefined) {
-        throw new Error('View context not found.');
+        throw new Error('Selector context not found.');
     }
     return context;
 }

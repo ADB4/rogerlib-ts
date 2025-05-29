@@ -50,7 +50,7 @@ export default function App() {
         'beanTextColors': ["",""],
     });
 */
-    const { compactView, setCompactView } = useDevice();
+    const compactView = useDevice();
     function handleColorToggle(toggle: boolean, data: ColorSchemeType): void {
         setColorToggle(toggle);
         let scheme: ColorSchemeType = {

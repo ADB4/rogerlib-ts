@@ -14,7 +14,6 @@ interface CopiedType {
     andy: boolean;
 }
 export default function CntctComponent({ outData }) {
-    const [visible, setVisible] = useState<boolean>(false);
     const [deets, setDeets] = useState<DeetsType>({
         info: "help@rogerlibrary.com",
         andy: "andy@rogerlibrary.com",
@@ -25,7 +24,7 @@ export default function CntctComponent({ outData }) {
     });
     const [footer, setFooter] = useState<string>("#### Hello, and thank you for visiting! Since the library launched at the beginning of the year, the main priority has been building out internal tooling to facilitate the various processes needed to catalogue new models, including automated product photography to ensure each model is compatible with the 3D model viewer.  \n#### In the mean time, please feel free to reach out to the appropriate email below for any inquiries related to Roger Motorsports Library.");
     const { darkMode, setDarkMode } = useColorModeContext();
-    const { compactView, setCompactView } = useDevice();
+    const compactView = useDevice();
 
     function handleCopyToClipboard(text) {
         let copiedState: CopiedType = {
@@ -63,51 +62,23 @@ export default function CntctComponent({ outData }) {
     const whiteblack = darkMode ? "#d4d4d4":"black";
     const buttonColor: React.CSSProperties = {
         color: darkMode? "white":"black",
-        margin: "auto",
-        marginTop: "auto",
-        marginBottom: "auto",
-        fontFamily: "Swiss721",
-        fontWeight: "100",
-        WebkitTransition: "all 0.5s ease",
-        transition: "all 0.5s ease",
-        MozTransition: "all 0.5s ease",
     };
     const cntctCopy: React.CSSProperties = {
         backgroundColor: blackwhite,
         color: whiteblack,
-        WebkitTransition: "all 0.5s ease",
-        transition: "all 0.5s ease",
-        MozTransition: "all 0.5s ease",
     };
     const textColor = {
         color: darkMode ?"white":"black",
     };
-    const beanOff = darkMode ? "black":"#07215c";
-    const beanColor: React.CSSProperties = {
-        boxShadow: visible ? "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset": "none",
-        backgroundColor: visible ? "#aaff0d":beanOff,
-        WebkitTransition: "all 0.5s ease",
-        transition: "all 0.15s ease",
-        MozTransition: "all 0.15s ease",
-    };
     const cntctContainer: React.CSSProperties = {
         color: darkMode ? "white":"black",
         width: compactView ? "calc(100% - 1rem)":"calc(100% - 6rem)",
-        WebkitTransition: "all 0.5s ease",
-        transition: "all 0.5s ease",
-        MozTransition: "all 0.5s ease",
     };
     const cntctForm: React.CSSProperties = {
         backgroundColor: darkMode ? "white":"black",
-        WebkitTransition: "all 0.5s ease",
-        transition: "all 0.5s ease",
-        MozTransition: "all 0.5s ease",
     };
     const cntctText: React.CSSProperties = {
         color: darkMode ? "black":"white",
-        WebkitTransition: "all 0.5s ease",
-        transition: "all 0.5s ease",
-        MozTransition: "all 0.5s ease",
     };
     return (
     <>

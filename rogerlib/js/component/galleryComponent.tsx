@@ -1,9 +1,8 @@
 import * as React from "react"
 import { useState, useLayoutEffect, useEffect, useContext } from "react";
 import { DictType, ItemType, ModelContext, useModelContext, useColorModeContext } from "../context/galleryContext";
-import DetailContainerComponent from "./detailContainer";
-import FilterComponent from "./filter";
 import { useDevice } from "../hooks/useDevice";
+import DetailContainerComponent from "../component/detailComponent";
 
 interface DetailViewType {
     item: ItemType | null;
@@ -26,13 +25,12 @@ export default function GalleryComponent({ outData }) {
         toggle: false
     });
     const { darkMode, setDarkMode } = useColorModeContext();
-    const { compactView, setCompactView } = useDevice();
+    const compactView = useDevice();
 
     function delay(ms) {
         return new Promise(res => setTimeout(res, ms));
     }
     async function openDetailView(data) {
-
         let detailViewVar: DetailViewType = {
             item: null,
             toggle: false,
@@ -175,11 +173,10 @@ export default function GalleryComponent({ outData }) {
                 <div id="standard-header">
                     <hr className="solid"/>
                 </div>
-                    <FilterComponent outData={handleFilterResults}/>
-                    <LibraryListComponent inData={{selection: selection, items: items}} outData={openDetailView}/>
-                    {detailViewConfig.toggle && (
+                <LibraryListComponent inData={{selection: selection, items: items}} outData={openDetailView}/>
+                {detailViewConfig.toggle && (
                             <DetailContainerComponent inData={inData} outData={closeDetailView}></DetailContainerComponent>
-                    )}
+                )}
             </div>
             </>
         )
@@ -187,19 +184,11 @@ export default function GalleryComponent({ outData }) {
 }
 
 /*
-                <>
-                <a className="nav-library-external" href="https://ndybui.dev" style={libInfoExternal}><h4>[EXTERNAL] ANDY BUI</h4></a>
-                <div className="nav-library-info-container" style={libInfoContainer}>
-                    <Markdown className="markdown-info" style={markdowninfo}>{galleryInfo}</Markdown>
-                </div>
-                </>
-                {informationToggle && (
-                <div className="library-info-container" style={libInfoContainer}>
-                    <Markdown className="markdown-info" style={markdowninfo}>{galleryInfo}</Markdown>
-                        <a className="library-info-external" href="https://ndybui.dev" style={libInfoExternal}><h4>[EXTERNAL] Andy Bui↘</h4></a>
-                </div>
-                )}
-            <img className="graphic-earthmini" src="https://s3.us-east-2.amazonaws.com/static.rogerlib.com/static/graphics/earth64.gif"/>
+                    <FilterComponent outData={handleFilterResults}/>
+                    <LibraryListComponent inData={{selection: selection, items: items}} outData={openDetailView}/>
+                    {detailViewConfig.toggle && (
+                            <DetailContainerComponent inData={inData} outData={closeDetailView}></DetailContainerComponent>
+                    )}
 */
 export function LibraryListComponent({ inData, outData }) {
     return (

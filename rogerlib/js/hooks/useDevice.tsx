@@ -14,5 +14,5 @@ export const useDevice = () => {
       window.removeEventListener('resize', checkMobile);
     };
   }, []);
-  return { compactView, setCompactView };
+  return compactView;
 };

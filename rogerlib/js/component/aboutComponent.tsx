@@ -9,7 +9,7 @@ export default function AboutComponent({ outData }) {
     const [visible, setVisible] = useState<boolean>(false);
     const [footer, setFooter] = useState<string>("#### ROGER MOTORSPORTS LIBRARY (RML) is a repository of 3D assets made by ANDY BUI. It is a web library created with REACT.JS and FLASK that features a model gallery, interactive model viewer, and downloads served from AMAZON S3. With the help of HTML, CSS, & JAVASCRIPT ALL-IN-ONE FOR DUMMIES by PAUL MCFREDIES, the application was designed by ANDY BUI using the SWISS721, GARAMOND font families.  \n#### ANDY BUI is a programmer and 3D artist with expertise in cloud infrastructure. Based out of Michigan, he created ROGER MOTORSPORTS LIBRARY as a proxy for his endeavors in game development, which include but are not limited to environmental and character art. Assets catalogued in the library are licensed under CC BY-NC 4.0. Users may remix, tweak, and build upon each work for non-commercial purposes with proper attribution only. For commercial licenses, please see the contact page.");
     const { darkMode, setDarkMode } = useColorModeContext();
-    const { compactView, setCompactView } = useDevice();
+    const compactView = useDevice();
 
     useLayoutEffect(() => {
         const data = {
@@ -23,36 +23,6 @@ export default function AboutComponent({ outData }) {
     const aboutContainer: React.CSSProperties = {
         color: darkMode ? "white":"black",
         width: compactView ? "calc(100% - 1rem)":"calc(100% - 6rem)",
-        WebkitTransition: "all 0.5s ease",
-        transition: "all 0.5s ease",
-        MozTransition: "all 0.5s ease",
-    };
-    const beanOff = darkMode ? "black":"#07215c";
-    const landingNavCompactItem = {
-        backgroundColor: darkMode ? "#11171f":"#0d2e7a",
-        border: darkMode ? "":"",
-        WebKitTransition: "all 0.5s ease",
-        transition: "all 0.15s ease",
-        MozTransition: "all 0.15s ease",
-    };
-    const landingToggleButton = {
-        boxShadow: darkMode ? "white 0px -50px 36px -28px inset":"none",
-        backgroundColor: darkMode ? "#aaadb5":"#0c3fb5",
-        border: darkMode ? "2px solid #161c33":"2px solid #1452e0",
-        WebKitTransition: "all 0.5s ease",
-        transition: "all 0.15s ease",
-        MozTransition: "all 0.15s ease",
-    };
-    const landingNavExternal = {
-        fontWeight: "200",
-        WebKitTransition: "all 0.5s ease",
-        transition: "all 0.15s ease",
-        MozTransition: "all 0.15s ease",
-    };
-    const graphicCircle = {
-        WebKitTransition: "all 0.15s ease",
-        transition: "all 0.15s ease",
-        MozTransition: "all 0.15s ease",
     };
     const externalContainer: React.CSSProperties = {
         backgroundColor: darkMode ? "white":"black",
@@ -87,16 +57,3 @@ export default function AboutComponent({ outData }) {
     </>
     );
 }
-/*
-        <div className="markdown-landing-container" style={aboutparagraph}>
-            <Markdown className="markdown-landing">{content}</Markdown>
-        </div>
-        {!compactView && (
-        <>
-            <footer className="landing-footer">
-                <img className="graphic-rml" src="https://d2fhlomc9go8mv.cloudfront.net/static/graphics/RML_white.png" alt="Roger Motorsports Library logo, white"/>
-                <h4 style={footerText}>{footer}</h4>
-            </footer>
-        </>
-        )}
-        */
